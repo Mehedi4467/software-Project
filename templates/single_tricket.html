@@ -1,0 +1,100 @@
+{% extends 'layout.html'%} {% block title %}
+
+<title>Bangladesh Railway</title>
+{% endblock %} {% block content %} {% load static %}
+<div class="banner-part">
+  <div class="banner-image-content">
+    <div class="banner-content" style="background-image: url({% static 'img/home-image1.png' %});">
+          <div class="col-12" style="z-index: 1 !important">
+
+
+           {% if user.is_authenticated %}
+            
+            <div class="container">
+                <div class="row py-5 justify-content-center">
+                    <div class="col-6">
+                    
+    <form action="{% url 'Purchase' %}" method='POST'>
+    {% csrf_token %}
+  <div class="form-row">
+    
+     <input type="hidden" value="{{train_data.Train_name}}" name="train_name">
+    
+     <input type="hidden" value="{{train_data.From}}" name="From">
+     <input type="hidden" value="{{train_data.To}}" name="To">
+     <input type="hidden" value="{{train_data.Date|date}}" name="Date">
+     <input type="hidden" value="{{train_data.Date|time}}" name="time">
+
+
+        <div class="form-group col-md-6">
+      <label for="inputState">Adult</label>
+      <select id="inputState" name="adult" class="form-control">
+        <option disabled selected>Choose...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        
+      </select>
+    </div>
+
+        <div class="form-group col-md-6">
+      <label for="inputState">Child</label>
+      <select id="inputState" name="child" class="form-control">
+        <option disabled selected>Choose...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        
+      </select>
+    </div>
+
+
+
+    <div class="form-group col-md-6">
+      <label for="inputEmail41">TXID</label>
+      <input type="text" name="txid" class="form-control" id="inputEmail41" placeholder="Transaction ID">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Phone Number</label>
+      <input type="text" name="phone" class="form-control" id="inputEmail4" placeholder="Send Money Number">
+    </div>
+
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Buy Tricket</button>
+</form>
+                    
+                    
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            {% else %}
+
+             <a
+              href="{% url 'log' %}"
+              style="
+                padding: 10px 10px;
+                background-color: #1e5873;
+                margin-top: 238px;
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+              "
+              >Ticket Counter</a>
+            {% endif %}
+          </div>
+        
+ 
+    </div>
+  </div>
+</div>
+
+{% endblock %}

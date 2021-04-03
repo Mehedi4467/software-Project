@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+ {% block title %}
+<title>Profile Update</title>
+{% endblock%} {% block content %} {% load static %}
+<div class="mehedi">
+  <div class="alamin">
+    <div class="alamin-one">
+
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} 
+
+
+      <h4>User Profile Update</h4>
+    </div>
+       <div class="alamin-two">
+      <form method="POST" action="{% url 'update' %}">
+      
+        {% csrf_token %}
+         <p>User Name</p>
+         {{user_form.username}}
+         <p>Email</p>
+        {{ user_form.email}}
+        <p>First Name</p>
+        {{ profile_form.first_name }}
+        <p>Last NAme</p>
+        {{ profile_form.last_name }}
+        <p>Mobile Number</p>
+        {{ profile_form.mobile }}
+        <p>Address</p>
+        {{ profile_form.adress }}
+        <p>City</p>
+        {{ profile_form.city }}
+        <p>Blood Group</p>
+        {{ profile_form.Bg }}
+        <br /> 
+
+        
+
+    
+
+        <button type="submit">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

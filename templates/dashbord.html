@@ -1,0 +1,162 @@
+{% extends 'layout.html'%}
+
+{% block title%}
+<title>Bangladesh Railway | Dashboard</title>
+{% endblock %}
+
+{% block content%}
+{% load static %}
+<div class="banner-content" style="background-image: url({% static 'img/home-image1.png' %});">
+        <div class="content_info">
+          <div class="banner-content">
+            
+            
+            
+           {% if user.is_authenticated %}
+
+
+           <div class="content_info_info">
+             <h4>Personal Information</h4>
+             
+             <div class="content_info_one">
+              <p>Username</p>
+              <p>Name</p>
+              <p class="p-0">Email</p><br>
+              
+              
+              
+              
+            </div>
+           
+            <div class="content_info_two">
+              <p>{{user.username}}</p>
+              <p>{{Ad.first_name}} {{Ad.last_name}}</p>
+              <p class="ml-5">{{user.email}}</p>
+              
+              
+            </div>
+            
+            
+            <div class="content_info_three">
+              <p>Phone Number</p>
+              <p>Blood Group</p>
+              <p >Address</p>
+              
+              
+            </div>
+            <div class="content_info_two">
+              <p>{{Ad.mobile}}</p>
+              <span><p>{{Ad.Bg}}</p></span>
+              <span><p>{{Ad.adress}}</p></span>
+              
+            </div>
+          </div>
+
+        
+          {% endif %}
+          
+        </div>
+        
+
+        
+        
+        
+      </div>
+</div>
+
+
+</div>
+        
+        <div class="Content_two">
+        <h4>Dashboard</h4>
+        </div>
+        
+        
+      
+
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <div class="Content-three">
+           <a href="Jvascript:void(0)"> Dashboard History</a>
+           <a href="{% url 'update' %}">  Update User Profile</a>
+           <a href="{% url 'update_password' %}">  Change Password</a>
+           
+           <a href="{% url 'history' %}">  Purchase History</a>
+          
+            
+             
+        </div>
+              </div>
+              <div class="col-8">
+              <div class="Content_Four">
+                 
+          
+            
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align:center;
+}
+td {
+  font-size:12px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.buynow a{
+    padding:5px 10px;
+    text-decoration:none;
+    background-color:#ffae00;
+    color:#000;
+    font-size:12px;
+}
+
+.buynow a:hover{
+    
+    background-color:#fd7e14;
+
+}
+</style>
+
+<table>
+  <tr>
+    <th>Train Name</th>
+    <th>Departure</th>
+    <th>Arrival</th>
+    <th>Date</th>
+    <th>Fare</th>
+  </tr>
+
+
+{% for t in tr %}
+
+  <tr>
+    <td>{{t.train_name}}</td>
+    <td>{{t.From}}</td>
+    <td>{{t.To}}</td>
+    <td>{{t.Date}} {{t.time}}</td>
+    <td>BDT 200<span><span class="ml-3 buynow"> <a href="{% url 'pdf' id=t.id %}" class="btn btn-primary" target="_blank">Download Tricket</a></span> </td>
+
+  </tr>
+{% endfor %}
+</table>
+            </div>
+                  
+                  
+              </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+ {% block title %}
+<title>User Registration</title>
+{% endblock%} {% block content %} {% load static %}
+<div class="mehedi">
+  <div class="alamin">
+    <div class="alamin-one">
+
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} 
+
+
+      <h4>User Registration</h4>
+    </div>
+       <div class="alamin-two">
+      <form method="POST" action="">
+      
+        {% csrf_token %}
+        <p>User Name</p>
+         {{ form.username}}
+         <p>Email</p>
+        {{ form.email}}
+        <p>Password</p>
+        {{ form.password1 }}
+        <p>Confirm Password</p>
+        {{ form.password2 }}<br />
+
+    
+
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

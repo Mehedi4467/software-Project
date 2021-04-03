@@ -1,0 +1,79 @@
+{% extends 'layout.html'%} {% block title %}
+
+<title>Bangladesh Railway</title>
+{% endblock %} {% block content %} {% load static %}
+<div class="banner-part">
+  <div class="banner-image-content">
+    <div class="banner-content" style="background-image: url({% static 'img/home-image1.png' %});">
+ 
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align:center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.buynow a{
+    padding:10px 10px;
+    text-decoration:none;
+    background-color:#ffae00;
+    color:#000;
+}
+
+.buynow a:hover{
+    
+    background-color:#fd7e14;
+
+}
+</style>
+    <div class="cointainer">
+        <div class="row">
+            <div class="col-12 py-5">
+             {% if user.is_authenticated %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+<table>
+  <tr>
+    <th>Train Name</th>
+    <th>Departure</th>
+    <th>Arrival</th>
+    <th>Date</th>
+    <th>Fare</th>
+  </tr>
+
+  {% for t in train %}
+  <tr>
+    <td>{{t.Train_name}}</td>
+    <td>{{t.From}}</td>
+    <td>{{t.To}}</td>
+    <td>{{t.Date|date}}</td>
+    <td>{{t.ammound}} <span class="ml-3 buynow"> <a href="#">Purchase</a></span></td>
+    
+  </tr>
+{% endfor %}
+</table>
+                        </div>
+                    </div>
+                </div>
+             
+             {% endif %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

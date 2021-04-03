@@ -1,0 +1,54 @@
+{% extends 'layout.html'%} {% block title %}
+
+<title>Bangladesh Railway</title>
+{% endblock %} {% block content %} {% load static %}
+<div class="banner-part">
+  <div class="banner-image-content">
+    <div class="banner-content" style="background-image: url({% static 'img/home-image1.png' %});">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+          
+            <h2>Welcome to</h2>
+           
+            <h2 style="font-size:60px;">Rail Sheba</h2>
+            <h2>E-Ticketing Service</h2>
+          </div>
+          <div class="col-6" style="z-index: 1 !important">
+
+
+           {% if user.is_authenticated %}
+            <a
+              href="{% url 'counter' %}"
+              style="
+                padding: 10px 10px;
+                background-color: #1e5873;
+                margin-top: 238px;
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+              "
+              >Ticket Counter</a>
+            {% else %}
+
+             <a
+              href="{% url 'log' %}"
+              style="
+                padding: 10px 10px;
+                background-color: #1e5873;
+                margin-top: 238px;
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+              "
+              >Ticket Counter</a
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

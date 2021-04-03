@@ -1,0 +1,36 @@
+{% extends 'layout.html' %} {% block title %}
+<title>Login</title>
+{% endblock %} {% block content %}
+<div class="mehedi">
+  <div class="alamin">
+    <div class="alamin-one">
+
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+      <h4>Login</h4>
+    </div>
+    <div class="alamin-two">
+      <form method="POST" action="{% url 'log' %}">
+        {% csrf_token %}
+        <p>Email or Phone</p>
+        <input type="text" name="username" placeholder="Enter Email or Phone" value="" />
+
+        <p>Password</p>
+        <input type="password" name="password" placeholder="Password" value="" /><br />
+        <input type="checkbox" name="" value="" /> Remember Me <br />
+
+        <button type="submit">Login</button>
+        <a href="#">Forgot Your Password</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock%}

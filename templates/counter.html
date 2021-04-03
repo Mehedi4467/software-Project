@@ -1,0 +1,95 @@
+{% extends 'layout.html'%} {% block title %}
+{% load tz %}
+<title>Bangladesh Railway</title>
+{% endblock %} {% block content %} {% load static %}
+<div class="banner-part">
+  <div class="banner-image-content">
+    <div class="banner-content" style="background-image: url({% static 'img/home-image1.png' %});">
+          <div class="col-12" style="z-index: 1 !important">
+
+
+           {% if user.is_authenticated %}
+            
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align:center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.buynow a{
+    padding:8px 10px;
+    text-decoration:none;
+    background-color:#ffae00;
+    color:#000;
+}
+
+.buynow a:hover{
+    
+    background-color:#fd7e14;
+
+}
+</style>
+
+<table>
+  <tr>
+    <th>Train Name</th>
+    <th>Departure</th>
+    <th>Arrival</th>
+    <th>Date</th>
+    <th>Fare</th>
+  </tr>
+
+  {% for t in train %}
+
+
+  <tr>
+    <td>{{t.Train_name}}</td>
+    <td>{{t.From}}</td>
+    <td>{{t.To}}</td>
+    <td>{% localtime on %}
+    {{t.Date|date}} {{t.Date|time}}
+{% endlocaltime %}</td>
+    <td>BDT {{t.ammound}}<span><span class="ml-3 buynow"> <a href="{% url 'buy' id=t.id %}" class="btn btn-primary" >Purchase</a></span> </td>
+
+  </tr>
+
+{% endfor %}
+</table>
+
+
+            {% else %}
+
+             <a
+              href="{% url 'log' %}"
+              style="
+                padding: 10px 10px;
+                background-color: #1e5873;
+                margin-top: 238px;
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+              "
+              >Ticket Counter</a>
+            {% endif %}
+          </div>
+        
+ 
+    </div>
+  </div>
+</div>
+
+{% endblock %}
